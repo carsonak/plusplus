@@ -1,2 +1,5 @@
 # vs code configs
 *.vscode
+
+# output files
+*/bin/*

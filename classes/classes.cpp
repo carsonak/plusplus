@@ -9,3 +9,5 @@ the child class and the grand child class both extend the destructor?*/
 /* Virtual constructors and destructors?*/
 
 /* Default values for class attributes?*/
+
+/*this? when and how to use it.*/

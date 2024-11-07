@@ -3,17 +3,14 @@
 /*!
  * @brief tests.
  * @param
- * @return always 0.
+ * @return 0 always.
  */
-int main(void) {
-  std::string a{"Eeh Mungu nguvu yetu,"};
+int main(void)
+{
+	if (nullptr)
+		std::cout << "true" << "\n";
+	else
+		std::cout << "false" << "\n";
 
-  std::cout << a << "\nLength: " << a.length() << " Size: " << sizeof(a)
-            << "\n\n";
-
-  a += "\niilete baraka kwetu,";
-
-  std::cout << a << "\nLength: " << a.length() << " Size: " << sizeof(a)
-            << '\n';
-  return (0);
+	return (0);
 }

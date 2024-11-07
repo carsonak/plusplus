@@ -1,7 +1,5 @@
-CC := g++
-TARGET := vector
+TARGET := bin/vector
 FILES := *.cpp
-CXXFLAGS := --std=c++17 -Wall -Wextra -Werror -Og -g3 -fsanitize=address -fsanitize=undefined
+CXXFLAGS := --std=c++17 -Wall -Wextra -Werror -Og -g3 -MMD -fsanitize=address -fsanitize=undefined
 
-all: $(FILES)
-	$(CC) $(CXXFLAGS) $^ -o $(TARGET)
+$(TARGET): $(FILES)
