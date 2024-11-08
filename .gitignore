@@ -1,5 +1,5 @@
 # vs code configs
 *.vscode
 
-# output files
+# binary files
 */bin/*

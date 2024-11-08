@@ -19,20 +19,22 @@ void print_vec(std::ostream& stream, const std::vector<int>& vec)
 }
 
 /*!
- * @brief write a range of numbers to an int array.
+ * @brief fill an array with a sequence of numbers.
  * @param array pointer to an int array.
  * @param len length of the array.
- * @param start first number in the array.
- * @param step difference between the numbers in the range.
+ * @param start first number in the sequence.
+ * @param gen_next pointer to a function that generates the next number in the
+ * sequence.
  */
 void fill_array(
-	int* array, const std::size_t len, int start, const int step = 1
+	int* const array, const std::size_t len, int start,
+	int (*gen_next)(const int)
 )
 {
 	for (std::size_t i = 0; i < len; i++)
 	{
 		array[i] = start;
-		start += step;
+		start = gen_next(start);
 	}
 }
 
@@ -60,17 +62,20 @@ void print_array(std::ostream& stream, const int* arr, const std::size_t len)
  */
 int main(void)
 {
+	for (std::size_t arr_len = 5; arr_len <= 30; arr_len += 5)
+	{
+		int* arr = new int[arr_len];
+
+		std::cout << "Len: " << arr_len << " ";
+		print_array(std::cout, arr, arr_len);
+		std::cout << "\n";
+		fill_array(arr, arr_len, 100, [](const int x) -> int { return x + 1; });
+		print_array(std::cout, arr, arr_len);
+		std::cout << "\n\n";
+		delete[] arr;
+	}
+
 	constexpr std::size_t arr_len = 10;
-	int* arr = new int[arr_len];
-
-	std::cout << "Uninitialised array:\n";
-	print_array(std::cout, arr, arr_len);
-	fill_array(arr, arr_len, 0);
-	std::cout << "\nInitialised array:\n";
-	print_array(std::cout, arr, arr_len);
-	std::cout << "\n";
-	delete[] arr;
-
 	std::vector<int> vec(arr_len);
 
 	std::cout << "Uninitialised vector:\n";

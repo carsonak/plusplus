@@ -7,10 +7,6 @@
  */
 int main(void)
 {
-	if (nullptr)
-		std::cout << "true" << "\n";
-	else
-		std::cout << "false" << "\n";
-
+	std::cout << "VECTOR?\n";
 	return (0);
 }
