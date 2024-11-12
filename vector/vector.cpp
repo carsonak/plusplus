@@ -7,6 +7,6 @@
  */
 int main(void)
 {
-	std::cout << "VECTOR?\n";
-	return (0);
+    std::cout << "VECTOR?\n";
+    return (0);
 }

@@ -8,14 +8,15 @@
  */
 void print_vec(std::ostream &stream, const std::vector<int> &vec)
 {
-	stream << "{";
-	for (std::size_t i = 0; i < vec.size(); ++i)
-	{
-		stream << vec[i];
-		if (i < vec.size() - 1) stream << ", ";
-	}
+    stream << "{";
+    for (std::size_t i = 0; i < vec.size(); ++i)
+    {
+        stream << vec[i];
+        if (i < vec.size() - 1)
+            stream << ", ";
+    }
 
-	stream << "}";
+    stream << "}";
 }
 
 /*!
@@ -26,16 +27,14 @@ void print_vec(std::ostream &stream, const std::vector<int> &vec)
  * @param gen_next pointer to a function that generates the next number in the
  * sequence.
  */
-void fill_array(
-	int *const array, const std::size_t len, int start,
-	int (*gen_next)(const int)
-)
+void fill_array(int *const array, const std::size_t len, int start,
+                int (*gen_next)(const int))
 {
-	for (std::size_t i = 0; i < len; i++)
-	{
-		array[i] = start;
-		start = gen_next(start);
-	}
+    for (std::size_t i = 0; i < len; i++)
+    {
+        array[i] = start;
+        start = gen_next(start);
+    }
 }
 
 /*!
@@ -46,14 +45,15 @@ void fill_array(
  */
 void print_array(std::ostream &stream, const int *arr, const std::size_t len)
 {
-	stream << "[";
-	for (std::size_t i = 0; i < len; ++i)
-	{
-		stream << arr[i];
-		if (i < len - 1) stream << ", ";
-	}
+    stream << "[";
+    for (std::size_t i = 0; i < len; ++i)
+    {
+        stream << arr[i];
+        if (i < len - 1)
+            stream << ", ";
+    }
 
-	stream << "]";
+    stream << "]";
 }
 
 /*!
@@ -62,34 +62,36 @@ void print_array(std::ostream &stream, const int *arr, const std::size_t len)
  */
 int main(void)
 {
-	constexpr std::size_t arr_len = 10;
-	const int *p1 = new int[arr_len]{1, 2, 4, 8, 16, 32, 64, 128, 256, 512};
+    constexpr std::size_t arr_len = 10;
+    const int *p1 = new int[arr_len]{1, 2, 4, 8, 16, 32, 64, 128, 256, 512};
 
-	std::cout << p1 << "(p1) -> ";
-	print_array(std::cout, p1, arr_len);
-	std::cout << "\n";
+    std::cout << p1 << "(p1) -> ";
+    print_array(std::cout, p1, arr_len);
+    std::cout << "\n";
 
-	int *p2 = new int[arr_len];
+    int *p2 = new int[arr_len];
 
-	for (std::size_t i = 0; i < arr_len; i++) p2[i] = p1[i];
-	std::cout << p2 << "(p2) -> ";
-	print_array(std::cout, p2, arr_len);
-	std::cout << "\n";
+    for (std::size_t i = 0; i < arr_len; i++)
+        p2[i] = p1[i];
+    std::cout << p2 << "(p2) -> ";
+    print_array(std::cout, p2, arr_len);
+    std::cout << "\n";
 
-	delete[] p1;
-	delete[] p2;
+    delete[] p1;
+    delete[] p2;
 
-	const std::vector<int> v1{1, 2, 4, 8, 16, 32, 64, 128, 256, 512};
+    const std::vector<int> v1{1, 2, 4, 8, 16, 32, 64, 128, 256, 512};
 
-	std::cout << &v1 << "(v1) -> ";
-	print_vec(std::cout, v1);
-	std::cout << "\n";
+    std::cout << &v1 << "(v1) -> ";
+    print_vec(std::cout, v1);
+    std::cout << "\n";
 
-	std::vector<int> v2(10);
+    std::vector<int> v2(10);
 
-	for (std::size_t i = 0; i < v1.size(); i++) v2[i] = v1[i];
-	std::cout << &v2 << "(v2) -> ";
-	print_vec(std::cout, v2);
-	std::cout << "\n";
-	return (0);
+    for (std::size_t i = 0; i < v1.size(); i++)
+        v2[i] = v1[i];
+    std::cout << &v2 << "(v2) -> ";
+    print_vec(std::cout, v2);
+    std::cout << "\n";
+    return (0);
 }

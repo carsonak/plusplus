@@ -8,16 +8,14 @@
  * @param gen_next pointer to a function that generates the next number in the
  * sequence.
  */
-void fill_array(
-	int *const array, const std::size_t len, int start,
-	int (*gen_next)(const int)
-)
+void fill_array(int *const array, const std::size_t len, int start,
+                int (*gen_next)(const int))
 {
-	for (std::size_t i = 0; i < len; i++)
-	{
-		array[i] = start;
-		start = gen_next(start);
-	}
+    for (std::size_t i = 0; i < len; i++)
+    {
+        array[i] = start;
+        start = gen_next(start);
+    }
 }
 
 /*!
@@ -28,14 +26,15 @@ void fill_array(
  */
 void print_array(std::ostream &stream, const int *arr, const std::size_t len)
 {
-	stream << "[";
-	for (std::size_t i = 0; i < len; ++i)
-	{
-		stream << arr[i];
-		if (i < len - 1) stream << ", ";
-	}
+    stream << "[";
+    for (std::size_t i = 0; i < len; ++i)
+    {
+        stream << arr[i];
+        if (i < len - 1)
+            stream << ", ";
+    }
 
-	stream << "]";
+    stream << "]";
 }
 
 /*!
@@ -44,30 +43,30 @@ void print_array(std::ostream &stream, const int *arr, const std::size_t len)
  */
 int main(void)
 {
-	int *p1 = new int(7);
+    int *p1 = new int(7);
 
-	std::cout << p1 << "(p1) -> " << *p1 << "\n";
+    std::cout << p1 << "(p1) -> " << *p1 << "\n";
 
-	constexpr std::size_t arr_len = 7;
-	int *p2 = new int[arr_len];
+    constexpr std::size_t arr_len = 7;
+    int *p2 = new int[arr_len];
 
-	fill_array(p2, arr_len, 1, [](const int x) { return x * 2; });
-	std::cout << p2 << "(p2) -> ";
-	print_array(std::cout, p2, arr_len);
-	std::cout << "\n";
+    fill_array(p2, arr_len, 1, [](const int x) { return x * 2; });
+    std::cout << p2 << "(p2) -> ";
+    print_array(std::cout, p2, arr_len);
+    std::cout << "\n";
 
-	int *p3 = p2;
+    int *p3 = p2;
 
-	std::cout << p3 << "(p3) -> " << *p3 << "\n";
-	p2 = p1;
-	p2 = p3;
-	std::cout << p1 << "(p1) -> " << *p1 << "\n";
-	std::cout << p2 << "(p2) -> ";
-	print_array(std::cout, p2, arr_len);
-	std::cout << "\n";
+    std::cout << p3 << "(p3) -> " << *p3 << "\n";
+    p2 = p1;
+    p2 = p3;
+    std::cout << p1 << "(p1) -> " << *p1 << "\n";
+    std::cout << p2 << "(p2) -> ";
+    print_array(std::cout, p2, arr_len);
+    std::cout << "\n";
 
-	delete p1;
-	delete[] p2;
+    delete p1;
+    delete[] p2;
 
-	return (0);
+    return (0);
 }
