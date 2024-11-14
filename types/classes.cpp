@@ -11,3 +11,8 @@ the child class and the grand child class both extend the destructor?*/
 /* Default values for class attributes?*/
 
 /*this? when and how to use it.*/
+
+/* Move semantics? Can they completely replace pointers?
+Can you "move" local variables out of a function?*/
+
+/* Structured binding for classes with private attributes?*/
